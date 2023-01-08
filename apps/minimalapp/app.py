@@ -1,6 +1,8 @@
 from flask import Flask, render_template, url_for, request, redirect
 
 app = Flask(__name__)
+# SECRET_KEYを追加する
+app.config["SECRET_KEY"] = "2AZSMss3p5QPbcY2hBsJ"
 
 @app.route("/")
 def index():
@@ -42,8 +44,11 @@ def contact():
 @app.route("/contact/complete", methods=["GET", "POST"])
 def contact_complete():
     if request.method == "POST":
+        # フォーム属性を使ってフォームの値を取得する
+        username = request.form["username"]
+        email = request.form["email"]
+        description = request.form["description"]
         # メールを送る
-
         # contactエンドポイントへリダイレクトする
         return redirect(url_for("contact_complete"))
     return render_template("contact_complete.html")
