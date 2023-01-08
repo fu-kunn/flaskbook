@@ -1,4 +1,13 @@
-from flask import Flask, render_template, url_for, request, redirect
+from flask import(
+    Flask, 
+    current_app,
+    g,
+    redirect,
+    render_template, 
+    url_for, 
+    request, 
+    flash
+)
 
 app = Flask(__name__)
 # SECRET_KEYを追加する
