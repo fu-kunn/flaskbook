@@ -9,6 +9,19 @@
   </head>
   <body>
     <h2>問い合わせフォーム</h2>
+
+      <!-- エラーメッセージの取得 -->
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+      <ul>
+        {% for message in masseges %}
+        <li class="flash">{{ message }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+      {% endwith %}
+
+
       <form 
         action="{{ url_for('contact_complete') }}"
         method="POST"
