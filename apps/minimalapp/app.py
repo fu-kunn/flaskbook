@@ -1,5 +1,5 @@
 from email_validator import validate_email, EmailNotValidError
-from flask import(
+from flask import (
     Flask, 
     current_app,
     g,
