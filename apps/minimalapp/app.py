@@ -9,6 +9,7 @@ from flask import (
     request, 
     flash,
 )
+import logging
 
 app = Flask(__name__)
 # SECRET_KEYを追加する
