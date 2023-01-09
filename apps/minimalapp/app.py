@@ -10,12 +10,17 @@ from flask import (
     flash,
 )
 import logging
+from flask_debugtoolbar import DebugToolbarExtension
 
 app = Flask(__name__)
 # SECRET_KEYを追加する
 app.config["SECRET_KEY"] = "2AZSMss3p5QPbcY2hBsJ"
 # ログレベルの設定
 app.logger.setLevel(logging.DEBUG)
+# リダイレクトを中断しないようにする
+app.config["DEBUG_TB_INTERCEPT_REDIRECTS"] = False
+# DebugToolbarExtensionにアプリケーションをセットする
+toolbar = DebugToolbarExtension(app)
 
 @app.route("/")
 def index():
