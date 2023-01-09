@@ -14,6 +14,8 @@ import logging
 app = Flask(__name__)
 # SECRET_KEYを追加する
 app.config["SECRET_KEY"] = "2AZSMss3p5QPbcY2hBsJ"
+# ログレベルの設定
+app.logger.setLevel(logging.DEBUG)
 
 @app.route("/")
 def index():
