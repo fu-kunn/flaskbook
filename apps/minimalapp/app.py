@@ -32,7 +32,7 @@ app.config["MAIL_PORT"] = os.environ.get("MAIL_PORT")
 app.config["MAIL_USE_TLS"] = os.environ.get("MAIL_USE_TLS")
 app.config["MAIL_USERNAME"] = os.environ.get("MAIL_USERNAME")
 app.config["MAIL_PASSWORD"] = os.environ.get("MAIL_PASSWORD")
-app.config["MAIL_DEFAULT_SEVDER"] = os.environ.get("MAIL_DEFAULT_SEVDER")
+app.config["MAIL_DEFAULT_SENDER"] = os.environ.get("MAIL_DEFAULT_SENDER")
 
 # flask-mail拡張を登録する
 mail = Mail(app)
@@ -105,23 +105,24 @@ def contact_complete():
         
         if not is_valid:
             return redirect(url_for("contact"))
-        # contactエンドポイントへリダイレクトする
-        flash("問い合わせ内容はメールにて送信しました。問い合わせありがとうございます。")
-        return redirect(url_for("contact_complete"))
 
         send_email(
-          enail,
+          email,
           "問い合わせありがとうございました。",
           "contact_mail",
           username=username,
           description=description,
         )
 
+        # contactエンドポイントへリダイレクトする
+        flash("問い合わせ内容はメールにて送信しました。問い合わせありがとうございます。")
+        return redirect(url_for("contact_complete"))
     return render_template("contact_complete.html")
 
-def send_mail(to, subject, template, **kwargs):
+
+def send_email(to, subject, template, **kwargs):
     """メールを送信する関数"""
     msg = Message(subject, recipients=[to])
     msg.body = render_template(template + ".txt", **kwargs)
-    msg.html = render_template(template + "html", **kwargs)
+    msg.html = render_template(template + ".html", **kwargs)
     mail.send(msg)
