@@ -1,3 +1,6 @@
+import logging
+import os
+
 from email_validator import validate_email, EmailNotValidError
 from flask import (
     Flask, 
@@ -9,8 +12,9 @@ from flask import (
     request, 
     flash,
 )
-import logging
 from flask_debugtoolbar import DebugToolbarExtension
+from flask_mail import Mail
+
 
 app = Flask(__name__)
 # SECRET_KEYを追加する
@@ -100,3 +104,14 @@ def contact_complete():
         flash("問い合わせ内容はメールにて送信しました。問い合わせありがとうございます。")
         return redirect(url_for("contact_complete"))
     return render_template("contact_complete.html")
+
+# Mailクラスのコンフィグを追加
+app.config["MAIL_SERVER"] = os.environ.get("MAIL_SERVER")
+app.config["MAIL_PORT"] = os.environ.get("MAIL_PORT")
+app.config["MAIL_USE_TLS"] = os.environ.get("MAIL_USE_TLS")
+app.config["MAIL_USERNAME"] = os.environ.get("MAIL_USERNAME")
+app.config["MAIL_PASSWORD"] = os.environ.get("MAIL_PASSWORD")
+app.config["MAIL_DEFAULT_SEVDER"] = os.environ.get("MAIL_DEFAULT_SEVDER")
+
+# flask-mail拡張を登録する
+mail = Mail(app)
