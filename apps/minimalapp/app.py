@@ -11,6 +11,8 @@ from flask import (
     url_for, 
     request, 
     flash,
+    make_response,
+    session,
 )
 from flask_debugtoolbar import DebugToolbarExtension
 from flask_mail import Mail, Message
@@ -72,6 +74,18 @@ with app.test_request_context("users?updated=true"):
 """
 @app.route("/contact")
 def contact():
+    # レスポンスオブジェクトを取得
+    response = make_response(render_template("contact.html"))
+
+    # クッキーを設定
+    response.set_cookie("flaskbook key", "flask value")
+
+    # セッションを設定
+    session["username"] = "ichiro"
+
+    # レスポンスオブジェクトを返
+    return response
+
     return render_template("contact.html")
 
 @app.route("/contact/complete", methods=["GET", "POST"])
