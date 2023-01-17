@@ -12,3 +12,4 @@ crud = Blueprint(
 @crud.route("/")
 def index():
     return render_template("crud/index.html")
+
