@@ -83,10 +83,10 @@ def contact():
     # セッションを設定
     session["username"] = "ichiro"
 
-    # レスポンスオブジェクトを返
+    # レスポンスオブジェクトを返す
     return response
 
-    return render_template("contact.html")
+    # return render_template("contact.html")
 
 @app.route("/contact/complete", methods=["GET", "POST"])
 def contact_complete():
@@ -140,3 +140,4 @@ def send_email(to, subject, template, **kwargs):
     msg.body = render_template(template + ".txt", **kwargs)
     msg.html = render_template(template + ".html", **kwargs)
     mail.send(msg)
+
