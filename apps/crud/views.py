@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template
 
 # Blueprintでcrudアプリを生成
-curd = Blueprint(
+crud = Blueprint(
     "crud",
     __name__,
     template_folder="templates",
@@ -11,4 +11,4 @@ curd = Blueprint(
 # indexエンドポイントを作成しindex.htmlを返す
 @crud.route("/")
 def index():
-    return_template("crud/index.html")
+    return render_template("crud/index.html")
