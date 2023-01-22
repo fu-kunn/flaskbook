@@ -1,4 +1,6 @@
 from flask import Blueprint, render_template
+from apps.app import db
+from apps.crud.models import User
 
 # Blueprintでcrudアプリを生成
 crud = Blueprint(
@@ -13,3 +15,7 @@ crud = Blueprint(
 def index():
     return render_template("crud/index.html")
 
+@crud.route("/sql")
+def sql():
+    db.session.query(User).first()
+    return "コンソールログを確認してください"
