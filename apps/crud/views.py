@@ -17,5 +17,5 @@ def index():
 
 @crud.route("/sql")
 def sql():
-    db.session.query(User).filter_by(id=2, username="admin").all()
+    db.session.query(User).limit(1).all()
     return "コンソールログを確認してください"
