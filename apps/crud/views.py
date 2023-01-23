@@ -19,3 +19,4 @@ def index():
 def sql():
     db.session.query(User).limit(1).all()
     return "コンソールログを確認してください"
+    
