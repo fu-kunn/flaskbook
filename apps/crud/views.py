@@ -46,3 +46,4 @@ def users():
     """ユーザの一覧を取得する"""
     users = User.query.all()
     return render_template("crud/index.html", users=users)
+
