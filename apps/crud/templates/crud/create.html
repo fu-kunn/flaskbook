@@ -7,6 +7,9 @@
   <title>ユーザー新規作成</title>
 </head>
 <body>
+  {% extends "crud/base.html" %}
+  {% block title %}ユーザー新規作成{% endblock %}
+  {% block content %}
   <h2>ユーザー新規作成</h2>
   <form 
     action="{{ url_for('crud.create_user') }}"
@@ -34,5 +37,6 @@
     {% endfor %}
     <p>{{ form.submit() }}</p>
   </form>
+  {% endblock %}
 </body>
 </html>
