@@ -48,7 +48,7 @@ def users():
     return render_template("crud/index.html", users=users)
 
 # methodにGETとPOSTを指定する
-@crud.route("/users/<user_id>", method=["GET", "POST"])
+@crud.route("/users/<user_id>", methods=["GET", "POST"])
 def edit_user(user_id):
     form = UserForm()
 
