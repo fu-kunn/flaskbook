@@ -17,10 +17,11 @@ auth = Blueprint(
 def index():
   return render_template("auth/index.html")
 
+
 @auth.route("/signup", methods=["GET", "POST"])
 def signup():
   # SignUpFormをインスタンス化する
-  form = SignUpForm
+  form = SignUpForm()
   if form.validate_on_submit():
     user = User(
       username=form.username.data,
@@ -44,4 +45,4 @@ def signup():
       next_ = url_for("crud.users")
     return redirect(next_)
 
-return render_template("auth/signup.html", form=form)
+  return render_template("auth/signup.html", form=form)

@@ -1,7 +1,7 @@
 {% extends "auth/base.html" %}
 {% block title %}ユーザー新規登録{% endblock %}
 {% block content %}
-
+<h2>ユーザー新規登録</h2>
 <form 
   action="{{ url_for('auth.signup', next=request.args.get('next')) }}"
   method="POST"
