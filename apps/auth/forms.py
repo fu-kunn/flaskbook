@@ -22,4 +22,4 @@ class SignUpForm(FlaskForm):
     validators=[DataRequired("パスワードは必須です。"),]
   )
   submit = SubmitField("新規登録")
-  
+
