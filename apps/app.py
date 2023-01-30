@@ -44,3 +44,4 @@ def create_app(config_key):
     app.register_blueprint(crud_views.crud, url_prefix="/crud")
 
     return app
+
