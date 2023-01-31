@@ -10,7 +10,7 @@
   {% for message in get_flashed_messages() %}
   <p style="color: red;">{{ message }}</p>
   {% endfor %} {{ form.csrf_token }}
-  <p>{{ form.emial.label }} {{ form.email(placeholder="メールアドレス") }}</p>
+  <p>{{ form.email.label }} {{ form.email(placeholder="メールアドレス") }}</p>
   {% for error in form.email.errors %}
   <span style="color: red;">{{ error }}</span>
   {% endfor %}
@@ -21,3 +21,4 @@
   <p>{{ form.submit() }}</p>
 </form>
 {% endblock %}
+

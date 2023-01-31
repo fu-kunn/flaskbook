@@ -48,11 +48,11 @@ def signup():
   return render_template("auth/signup.html", form=form)
 
 
-@auth.route("/login", method=["GET", "POST"])
+@auth.route("/login", methods=["GET", "POST"])
 def login():
   form = LoginForm()
   if form.validate_on_submit():
-    user = User.query.filter_by(email=form.emial.data).first()
+    user = User.query.filter_by(email=form.email.data).first()
 
     if user is not None and user.verify_pasword(form.password.data):
       login_user(user)
