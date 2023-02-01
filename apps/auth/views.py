@@ -42,7 +42,7 @@ def signup():
     # GETパラメーターにnextキーが存在し、値がない場合はユーザーの一覧ページへリダイレクトする
     next_ = request.args.get("next")
     if next_ is None or not next_.startswith("/"):
-      next_ = url_for("crud.users")
+      next_ = url_for("detector.index")
     return redirect(next_)
 
   return render_template("auth/signup.html", form=form)
