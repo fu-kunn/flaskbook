@@ -19,6 +19,8 @@ class User(db.Model, UserMixin):
         default=datetime.now,
         onupdate=datetime.now
     )
+    # backrefを利用し、relation情報を設定する
+    user_images = db.relationship("UserImage", backref="user")
 
     # パスワードをセットするためのプロパティ
     @property
@@ -42,4 +44,3 @@ class User(db.Model, UserMixin):
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(user_id)
-
