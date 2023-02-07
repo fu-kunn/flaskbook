@@ -61,6 +61,7 @@ def login():
     flash("メールアドレスかパスワードが不正です")
   return render_template("auth/login.html", form=form)
 
+
 @auth.route("/logout")
 def logout():
   logout_user()
