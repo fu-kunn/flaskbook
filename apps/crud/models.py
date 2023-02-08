@@ -5,7 +5,7 @@ from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 
 # db.Modelを継承したUserクラスを作成する
-class User(db.Model, UserMixin):
+class User(UserMixin, db.Model):
     # テーブル名を指定する
     __tablename__ = "users"
     # カラムを定義する
